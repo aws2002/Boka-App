@@ -16,7 +16,7 @@ const loginSchemaValidation = Yup.object({
     .required("Password is required"),
 });
 
-export default function Login({ navigation }) {
+export default function Login() {
   const navigation = useNavigation();
 
   const { mutate, isLoading, isError, error, isSuccess, data } = useMutation(
@@ -38,9 +38,9 @@ export default function Login({ navigation }) {
   };
   return (
     <LayoutAuth createAccont={true}>
-      {mutation.isError && (
-        <Text style={styles.errorText}>
-          An error occurred: {mutation.error.message}
+      {isError && (
+        <Text>
+          An error occurred: {error.message}
         </Text>
       )}
 
