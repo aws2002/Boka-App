@@ -52,9 +52,9 @@ export default function Login() {
           validateOnBlur={false}
           validationSchema={loginSchemaValidation}
           initialValues={{ email: "", password: "" }}
-          onSubmit={(values, actions) => {
-            actions.resetForm();
-            console.log(values);
+          onSubmit={(values, { setSubmitting, resetForm }) => {
+            mutate(values, { onSuccess: ()=> resetForm() });
+            setSubmitting(false);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
